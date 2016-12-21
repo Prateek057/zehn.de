@@ -13,5 +13,5 @@ docker-compose up -d
 docker cp dump.sql $(docker ps --format "{{.Names}}" | grep db):/dump.sql
 ##restore data base
 #docker exec -t $(docker ps --format "{{.Names}}" | grep db) /bin/bash -c "export TERM=dumb"
-docker exec -ti $(docker ps --format "{{.Names}}" | grep db) "cat dump.sql | mysql -uroot -pexample wordpress"
+docker exec -i $(docker ps --format "{{.Names}}" | grep db) mysql -uroot -pexample wordpress < dump.sql
 exit
