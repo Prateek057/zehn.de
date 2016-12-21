@@ -6,6 +6,8 @@ wordpress:
     - /opt/share/zehn.de:/var/www/html/wp-content/uploads
   links:
       - db:mysql
+  log_driver: syslog
+  restart: always
 db:
   image: mariadb
   environment:
