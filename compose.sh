@@ -13,6 +13,6 @@ docker-compose up -d
 docker cp dump.sql $(docker ps --format "{{.Names}}" | grep db):/dump.sql
 docker cp restore-db.sh $(docker ps --format "{{.Names}}" | grep db):/restore-db.sh
 ##restore data base
-#docker exec -t $(docker ps --format "{{.Names}}" | grep db) /bin/bash -c "export TERM=dumb"
-docker exec -ti $(docker ps --format "{{.Names}}" | grep db) /bin/bash restore-db.sh
+##docker exec -t $(docker ps --format "{{.Names}}" | grep db) /bin/bash -c "export TERM=dumb"
+docker exec $(docker ps --format "{{.Names}}" | grep db) sh restore-db.sh
 exit
